@@ -1,0 +1,35 @@
+version: "3"
+services:
+  frontend:
+    image: hyunjoong0930/my-frontend:latest
+    networks:
+      - network1
+    ports:
+      - "80:3000"
+
+  backend:
+    image: hyunjoong0930/my-backend:latest
+    networks:
+      - network1
+    restart: always
+
+  mysql:
+    image: mysql:latest
+    restart: unless-stopped
+    ports:
+      - "33006:3306"
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+      - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: rootroot
+      MYSQL_USER: hjoong
+      MYSQL_PASSWORD: testtest
+      MYSQL_DATABASE: myapp
+    networks:
+      - network1
+
+networks:
+  network1:
+volumes:
+  mysqlvolume:
