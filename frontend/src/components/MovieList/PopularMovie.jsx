@@ -42,11 +42,12 @@ export const PopularMovie = styled.div`
   background-image: url(${(props) => props.bgphoto});
   background-size: cover;
   background-position: center center;
+
   border-radius: 15px;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 
-  transition: box-shadow 0.2s; // 기존의 box-shadow에 transition을 추가합니다.
+  transition: box-shadow 0.4s; // 기존의 box-shadow에 transition을 추가합니다.
   &:hover {
     box-shadow: none; // hover 시 box-shadow를 없앱니다.
   }
@@ -82,14 +83,15 @@ export const PopularMovieVariants = {
 
 export const BigMovie = styled(motion.div)`
   position: absolute;
-  left: 25%;
-  width: 50%;
+  left: 15%;
+  width: 70%;
   height: auto;
 
   margin: 0px auto;
   background-color: rgb(20, 20, 20);
-  border-radius: 15px;
+
   z-index: 4;
+  padding-bottom: 10px;
 `;
 
 export const Overlay = styled(motion.div)`
@@ -108,7 +110,7 @@ export const BigCover = styled.div`
   width: 100%;
   background-size: cover;
   background-position: center center;
-  height: 70vh;
+  min-height: 70vh;
 `;
 
 export const BigTitle = styled.div`
@@ -132,6 +134,7 @@ export const BigOthers = styled.div`
   position: relative;
   left: 0px;
   padding-left: 10px;
+
   font-weight: normal;
   color: white;
 `;

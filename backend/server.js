@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 
-app.get("/movies", (req, res) => {
+app.get("/api/movies", (req, res) => {
   return db.pool.query("select * from movie;", (err, results) => {
     if (err) {
       console.log(err);

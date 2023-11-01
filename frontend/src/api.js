@@ -8,7 +8,7 @@ export function getMovies() {
 }
 
 export function getMyMovies() {
-  return fetch(`http://localhost:5000/movies`).then((response) =>
+  return fetch(`http://localhost:5000/api/movies`).then((response) =>
     response.json()
   );
 }

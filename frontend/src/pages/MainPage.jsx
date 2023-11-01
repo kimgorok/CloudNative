@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const MainFrame = styled.div`
   width: 50%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   margin: 20px auto;
 
   flex-direction: column;

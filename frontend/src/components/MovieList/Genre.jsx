@@ -24,6 +24,17 @@ const SliderButton = styled(motion.button)`
   cursor: pointer;
 `;
 
+const DBMovieTitle = styled.div`
+  color: #000;
+
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -3.6px;
+`;
+
 const DBMovieWrapper = styled.div`
   height: 389px;
   flex-shrink: 0;
@@ -52,7 +63,7 @@ const GenreModule = ({
 }) => {
   return (
     <GenreFrame>
-      <h2>{title}</h2>
+      <DBMovieTitle>{title}</DBMovieTitle>
       <DBMovieWrapper>
         {images.map((image, index) => (
           <DBMovieFrame

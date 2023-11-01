@@ -18,7 +18,6 @@ import {
   BigTitle,
   BigOverView,
   BigOthers,
-  BigPoster,
 } from "./../components/MovieList/PopularMovie";
 import GenreModule from "../components/MovieList/Genre";
 
