@@ -2,13 +2,14 @@ docker-compose down
 
 cd frontend
 npm run build
-docker build -t hyunjoong0930/my-frontend:latest . //dockerfile 빌드
+docker build -t hyunjoong0930/my-frontend:latest .
 docker push hyunjoong0930/my-frontend:latest
 
 cd ../backend
 docker build -t hyunjoong0930/my-backend:latest .
 docker push hyunjoong0930/my-backend:latest
 
+cd ../
 docker-compose up
 
 

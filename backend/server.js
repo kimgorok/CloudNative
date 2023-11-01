@@ -1,19 +1,21 @@
 const express = require("express");
 const db = require("./db");
-
+const cors = require("cors");
 const app = express();
 
-app.use(express.json());
+app.use(cors());
 
-// 테이블 생성하기 예시
-// mysql은 mysql폴더에서 데이터베이스및 table을 생성해줄 예정이다
-//db.pool.query(`CREATE TABLE lists (
-//    id INTEGER AUTO_INCREMENT,
-//    value TEXT,
-//    PRIMARY KEY (id)
-//)`, (err, results, fields) => {
-//    console.log('results', results);
-//})
+app.get("/movies", (req, res) => {
+  return db.pool.query("select * from movie;", (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(results);
+    return res.json(results);
+  });
+});
+
+app.use(express.json());
 
 app.get("/api/values", (req, res, next) => {
   db.pool.query("SELECT *FROM lists;", (err, results, fields) => {
