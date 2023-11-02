@@ -57,7 +57,7 @@ const images = [
 function MovieList() {
   // useQuery로 영화api를 가져옴
   const { data } = useQuery(["movies", "nowPlaying"], getMovies);
-  const { dbdata } = useQuery(["dbmovies", "animation"], getMyMovies);
+  const dbdata = useQuery(["dbmovies", "animation"], getMyMovies);
   console.log(dbdata);
 
   const [index, setIndex] = useState(3);
