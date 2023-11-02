@@ -1,20 +1,16 @@
 import React from "react";
 
-import onlineIcon from "../InfoBar/onlineIcon.png";
-import closeIcon from "../InfoBar/closeIcon.png";
-
 import "./InfoBar.css";
 
 function InfoBar() {
   return (
     <div className="infoBar">
       <div className="leftInnerContainer">
-        <img className="onlineIcon" src={onlineIcon} alt="online icon" />
-        <h3>room</h3>
+        <h3>1 : 1 문의</h3>
       </div>
       <div className="rightInnerContainer">
         <a href="/join">
-          <img src={closeIcon} alt="close icon" />
+          <h3>나가기</h3>
         </a>
       </div>
     </div>

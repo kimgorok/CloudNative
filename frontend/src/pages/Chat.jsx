@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 
-import InfoBar from "../components/InfoBar/InfoBar";
-import Input from "../components/Input/Input";
+import InfoBar from "../components/Chatting/InfoBar/InfoBar";
+import Input from "../components/Chatting/Input/Input";
 import Messages from "../components/Messages/Messages";
 
 import "./Chat.css";
@@ -17,9 +17,6 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const messageRef = useRef(null);
-  console.log("유저 : " + users);
-  // 테스트용
 
   useEffect(() => {
     // URL에서 name과 room을 가져옵니다.
@@ -56,7 +53,6 @@ const Chat = ({ location }) => {
     event.preventDefault();
 
     if (message) {
-      // console.log(message)
       socket.emit("sendMessage", message, () => setMessage(""));
     }
   };

@@ -18,7 +18,7 @@ import {
   BigTitle,
   BigOverView,
   BigOthers,
-} from "./../components/MovieList/PopularMovie";
+} from "../components/MovieList/PopularMovie";
 import GenreModule from "../components/MovieList/Genre";
 
 // 메인 테두리

@@ -56,7 +56,6 @@ app.use(express.json()); // JSON 파싱 미들웨어
 
 // 채팅창 추가
 // Socket.IO 및 HTTP 서버 설정
-
 const router = require("./router");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
 

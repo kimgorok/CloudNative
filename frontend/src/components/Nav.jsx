@@ -100,7 +100,7 @@ function MyNav() {
 
       <Link to="/join">
         <NavList>
-          <NavListText>회원정보</NavListText>
+          <NavListText>1 : 1 문의</NavListText>
         </NavList>
       </Link>
     </NavWrapper>
