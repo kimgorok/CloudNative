@@ -98,7 +98,7 @@ function MyNav() {
         </NavList>
       </Link>
 
-      <Link to="/userinfo">
+      <Link to="/join">
         <NavList>
           <NavListText>회원정보</NavListText>
         </NavList>

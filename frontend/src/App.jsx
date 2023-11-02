@@ -6,7 +6,9 @@ import MyNav from "./components/Nav";
 import MovieList from "./pages/MovieList";
 import FloatButton from "./components/FloatButton";
 import BoardPage from "./pages/BoardPage";
-import UserInfo from "./pages/UserInfo";
+
+import Join from "./pages/Join";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route path="/movielist" element={<MovieList />} />
         <Route path="movielist/:id" element={<MovieList />} />
         <Route path="/board" element={<BoardPage />}></Route>
-        <Route path="/userinfo" element={<UserInfo />}></Route>
+        <Route path="/join/chat" element={<Chat />}></Route>
+        <Route path="/join" element={<Join />}></Route>
       </Routes>
       <FloatButton />
     </Router>
