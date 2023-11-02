@@ -8,3 +8,5 @@ const pool = mysql.createPool({
 });
 
 exports.pool = pool;
+
+// 데탑 mysql 비밀번호 0000

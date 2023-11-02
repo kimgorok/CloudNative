@@ -13,8 +13,6 @@ export function getMyMovies() {
   );
 }
 
-// 집컴 mysql 비밀번호 0000
-
 export function makeImagePath(id, format) {
   return `https://image.tmdb.org/t/p/${format ? format : "original"}/${id}`;
 }

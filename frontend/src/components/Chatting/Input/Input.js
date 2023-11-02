@@ -3,16 +3,17 @@ import React from "react";
 import "./Input.css";
 
 const Input = ({ setMessage, sendMessage, message }) => {
+  // 엔터 눌러서 채팅 전송하기
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Enter 키 눌렀을 때 새로고침 방지
-      sendMessage(event);
+      event.preventDefault(); // 엔터 눌렀을 때 새로고침 안되게
+      sendMessage(event); // sendMessage 함수를 호출하여 메시지 전송
     }
   };
 
   const handleButtonClick = (event) => {
-    event.preventDefault(); // 버튼 클릭 시 새로고침 방지
-    sendMessage(event);
+    event.preventDefault(); // 버튼 클릭했을 때 새로고침 안되게
+    sendMessage(event); // sendMessage 함수를 호출하여 메시지 전송
   };
 
   return (
@@ -22,7 +23,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
         type="text"
         placeholder="전송하려는 메시지를 입력하세요."
         value={message}
-        onChange={({ target: { value } }) => setMessage(value)}
+        onChange={({ target: { value } }) => setMessage(value)} // 입력 값 변경 시 setMessage 함수 호출
         onKeyDown={handleKeyPress}
       />
       <button
