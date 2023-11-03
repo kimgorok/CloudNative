@@ -15,18 +15,16 @@ export const MainFrame = styled.div`
 
 const BigText = styled.div`
   color: #000;
-  font-family: Inter;
   font-size: 36px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -3.6px;
   margin: 20px;
 `;
 
 const SmallText = styled(BigText)`
   font-size: 24px;
-  letter-spacing: -0px;
+  letter-spacing: 1px;
+  font-weight: 500;
 `;
 
 function MainPage() {

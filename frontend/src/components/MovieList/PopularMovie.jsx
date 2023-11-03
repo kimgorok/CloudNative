@@ -18,11 +18,8 @@ export const PopularMovieTitle = styled.div`
   height: 47px;
   margin: 20px 20px 0px 20px;
   color: #000;
-  font-family: Inter;
   font-size: 36px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -3.6px;
 `;
 
@@ -59,9 +56,7 @@ export const PopularMovieText = styled.div`
   color: white;
   font-size: 3.5rem;
   margin: 20px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   text-shadow: 3px 3px 0 black;
 `;
 

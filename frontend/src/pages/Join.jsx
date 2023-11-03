@@ -17,10 +17,8 @@ const RoomName = styled.input`
   color: white;
   border: none;
   padding: 20px;
-
   text-align: center;
   font-size: 28px;
-  font-style: normal;
   font-weight: 700;
   letter-spacing: -3.6px;
 `;
@@ -32,7 +30,6 @@ const NickName = styled.input`
   border-radius: 15px;
   border: 2px solid #f2889b;
   font-size: 25px;
-  font-style: normal;
   outline: none;
 `;
 

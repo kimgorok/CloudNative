@@ -6,21 +6,18 @@ import { motion } from "framer-motion";
 const BoardTitle = styled.div`
   background-color: #f2889b;
   color: #fff;
-  font-family: Inter;
+
   text-align: center;
   font-size: 36px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -3.6px;
   padding: 15px;
 `;
 
 const BoardSubTitle = styled.div`
   color: #000;
-  font-family: Inter;
+
   font-size: 28px;
-  font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -3.6px;
@@ -42,17 +39,13 @@ const BoardFrame = styled.div`
 const TitleAndDirector = styled.div`
   display: flex;
   width: 100%;
-
   justify-content: center;
   align-items: flex-start;
 `;
 
 const Title = styled.div`
   width: 100%;
-  font-family: Inter;
   font-size: 17px;
-  font-style: normal;
-  line-height: normal;
   border-bottom: 1px solid black;
   padding: 5px;
 `;
@@ -104,9 +97,7 @@ const CreateButton = styled(motion.button)`
 const CreateText = styled.div`
   color: white;
   text-align: center;
-  font-family: Inter;
   font-size: 22px;
-  font-style: normal;
   font-weight: 700;
   line-height: normal;
 `;

@@ -6,7 +6,6 @@ import styled from "styled-components";
 const HeaderWrapper = styled.div`
   width: 100%;
   height: 60px;
-  flex-shrink: 0;
   display: flex;
   justify-content: space-around;
   background: #f2889b;
@@ -21,7 +20,6 @@ const LoginRegisterFrame = styled.div`
 const LoginRegister = styled.div`
   color: white;
   font-size: 15px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
 `;
@@ -125,8 +123,12 @@ function MyHeader() {
           />
         </Search>
         <LoginRegisterFrame>
-          <LoginRegister>로그인</LoginRegister>
-          <LoginRegister>회원가입</LoginRegister>
+          <Link to="/">
+            <LoginRegister>로그인</LoginRegister>
+          </Link>
+          <Link to="/">
+            <LoginRegister>회원가입</LoginRegister>
+          </Link>
         </LoginRegisterFrame>
       </HeaderWrapper>
     </>

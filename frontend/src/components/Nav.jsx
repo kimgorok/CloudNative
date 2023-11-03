@@ -5,14 +5,12 @@ import styled from "styled-components";
 const NavWrapper = styled.div`
   width: 13%;
   height: 400px;
-
   border-radius: 20px;
   border: 12px double #f2889b;
   background: #fff;
   position: fixed;
   left: 1%;
   top: 9%;
-
   display: flex;
   flex-direction: column;
   z-index: 0;
@@ -24,7 +22,6 @@ const NavMenu = styled.div`
   height: 61px;
   display: flex;
   align-items: center;
-
   border-radius: 8px 8px 0px 0px;
   background: #f2889b;
 `;
@@ -33,14 +30,9 @@ const NavMenu = styled.div`
 const NavTitle = styled.span`
   width: 100%;
   padding: 10px;
-
-  flex-shrink: 0;
   color: #fff8ee;
-  font-family: Inter;
   font-size: 36px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -3.6px;
 `;
 
@@ -48,8 +40,6 @@ const NavTitle = styled.span`
 const NavList = styled.div`
   width: 100%;
   height: 62px;
-  flex-shrink: 0;
-
   border-bottom: 2px solid #f2889b;
   display: flex;
   align-items: center;
@@ -63,13 +53,9 @@ const NavList = styled.div`
 // 메뉴 리스트 글씨
 const NavListText = styled.span`
   width: 100%;
-
   color: #000;
-  font-family: Inter;
   font-size: 22px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   padding: 15px;
   letter-spacing: -3.6px;
 `;

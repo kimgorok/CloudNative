@@ -28,10 +28,7 @@ const SliderButton = styled(motion.button)`
 // DB로 가져온 영화 제목
 const DBMovieTitle = styled.div`
   color: #000;
-
-  font-family: Inter;
   font-size: 30px;
-  font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -3.6px;
