@@ -6,7 +6,7 @@ const NavWrapper = styled.div`
   width: 13%;
   height: 400px;
   border-radius: 20px;
-  border: 12px double #f2889b;
+  border: 12px double ${(props) => props.theme.pinkblueColor};
   background: #fff;
   position: fixed;
   left: 1%;
@@ -14,6 +14,7 @@ const NavWrapper = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 0;
+  background: ${(props) => props.theme.whiteblueColor};
 `;
 
 // 메뉴 써있는 부분
@@ -23,14 +24,14 @@ const NavMenu = styled.div`
   display: flex;
   align-items: center;
   border-radius: 8px 8px 0px 0px;
-  background: #f2889b;
+  background: ${(props) => props.theme.pinkblueColor};
 `;
 
 // 메뉴 글씨
 const NavTitle = styled.span`
   width: 100%;
   padding: 10px;
-  color: #fff8ee;
+  color: white;
   font-size: 36px;
   font-weight: 700;
   letter-spacing: -3.6px;
@@ -38,9 +39,10 @@ const NavTitle = styled.span`
 
 // 메뉴 리스트
 const NavList = styled.div`
+  background: ${(props) => props.theme.whiteblueColor};
   width: 100%;
   height: 62px;
-  border-bottom: 2px solid #f2889b;
+  border-bottom: 2px solid ${(props) => props.theme.pinkblueColor};
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -53,7 +55,7 @@ const NavList = styled.div`
 // 메뉴 리스트 글씨
 const NavListText = styled.span`
   width: 100%;
-  color: #000;
+  color: ${(props) => props.theme.darkwhiteColor};
   font-size: 22px;
   font-weight: 700;
   padding: 15px;

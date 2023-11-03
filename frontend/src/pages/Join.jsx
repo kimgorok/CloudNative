@@ -13,9 +13,10 @@ const JoinContainer = styled.div`
 
 //  방이름, 헤더처럼 사용
 const RoomName = styled.input`
-  background-color: #f2889b;
+  background-color: ${(props) => props.theme.pinkblueColor};
   color: white;
   border: none;
+  border-radius: 8px 8px 0px 0px;
   padding: 20px;
   text-align: center;
   font-size: 28px;
@@ -28,7 +29,7 @@ const NickName = styled.input`
   margin: 60px 20px 20px 20px;
   padding: 20px;
   border-radius: 15px;
-  border: 2px solid #f2889b;
+  border: 3px solid ${(props) => props.theme.pinkblueColor};
   font-size: 25px;
   outline: none;
 `;
@@ -43,10 +44,10 @@ const JoinButtonFrame = styled.div`
 // 가입 버튼
 const JoinButton = styled(motion.button)`
   color: white;
-  background: #f2889b;
+  background: ${(props) => props.theme.pinkblueColor};
   padding: 10px 25px;
   border-radius: 15px;
-  border: solid 3px black;
+  border: solid 3px ${(props) => props.theme.darkwhiteColor};
   cursor: pointer;
   text-align: center;
   font-size: 25px;

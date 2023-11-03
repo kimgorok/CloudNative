@@ -25,7 +25,7 @@ const ChatScreen = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #adcce4;
+  background: ${(props) => props.theme.ChattingBG};
   border-radius: 8px;
   margin-top: 5%;
   height: 80vh;

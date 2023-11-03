@@ -29,9 +29,9 @@ const MovieListFrame = styled.div`
   margin: 20px auto;
   // 요소들 세로로 정렬
   flex-direction: column;
-  background: #fff;
+  background: ${(props) => props.theme.whiteblueColor};
   border-radius: 20px;
-  border: 10px double #f2889b;
+  border: 10px double ${(props) => props.theme.pinkblueColor};
   overflow: hidden;
   // 부모 컨테이너에 대한 상대적 위치 설정
   position: relative;

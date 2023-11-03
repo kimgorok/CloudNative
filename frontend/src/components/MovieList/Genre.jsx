@@ -27,7 +27,7 @@ const SliderButton = styled(motion.button)`
 
 // DB로 가져온 영화 제목
 const DBMovieTitle = styled.div`
-  color: #000;
+  color: ${(props) => props.theme.darkwhiteColor};
   font-size: 30px;
   font-weight: 700;
   line-height: normal;

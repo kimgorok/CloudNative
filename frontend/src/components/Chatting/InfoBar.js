@@ -6,7 +6,7 @@ import styled from "styled-components";
 const InfoBarContainer = styled.div`
   display: flex;
   align-items: center;
-  background: #9dbcd4;
+  background: ${(props) => props.theme.ChattingHead};
   border-radius: 10px 10px 0 0;
   height: 7vh;
 `;

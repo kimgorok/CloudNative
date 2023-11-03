@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "./../atom";
+
 // + 버튼
 const ToggleButton = styled(motion.button)`
   position: fixed;
@@ -28,6 +31,8 @@ const OtherButton = styled(ToggleButton)`
 `;
 
 function FloatButton() {
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   const [movingButton, setMovingButton] = useState(false);
   const [toggleButtonClicked, setToggleButtonClicked] = useState(false);
 
@@ -50,6 +55,7 @@ function FloatButton() {
       behavior: "smooth", // 부드러운 애니메이션 사용
     });
   };
+
   return (
     <>
       <ToggleButton
@@ -65,9 +71,20 @@ function FloatButton() {
       </ToggleButton>
 
       <OtherButton
+        onClick={toggleDarkAtom}
+        initial={{ y: 0 }}
+        animate={{ y: movingButton ? -60 : 0 }}
+        transition={{ duration: 0.1 }}
+      >
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+      </OtherButton>
+
+      <OtherButton
         onClick={goTopClick}
         initial={{ y: 0 }}
-        animate={{ y: movingButton ? -120 : 0 }}
+        animate={{ y: movingButton ? -180 : 0 }}
         transition={{ duration: 0.1 }}
       >
         <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +94,7 @@ function FloatButton() {
       <OtherButton
         onClick={goBottomClick}
         initial={{ y: 0 }}
-        animate={{ y: movingButton ? -60 : 0 }}
+        animate={{ y: movingButton ? -120 : 0 }}
         transition={{ duration: 0.1 }}
       >
         <svg viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">

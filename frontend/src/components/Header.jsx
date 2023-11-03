@@ -8,7 +8,7 @@ const HeaderWrapper = styled.div`
   height: 60px;
   display: flex;
   justify-content: space-around;
-  background: #f2889b;
+  background: ${(props) => props.theme.pinkblueColor};
 `;
 
 const LoginRegisterFrame = styled.div`

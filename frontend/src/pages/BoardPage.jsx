@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const BoardTitle = styled.div`
-  background-color: #f2889b;
+  background-color: ${(props) => props.theme.pinkblueColor};
   color: #fff;
 
   text-align: center;
@@ -15,7 +15,7 @@ const BoardTitle = styled.div`
 `;
 
 const BoardSubTitle = styled.div`
-  color: #000;
+  color: ${(props) => props.theme.darkwhiteColor};
 
   font-size: 28px;
   font-weight: 700;
@@ -33,7 +33,7 @@ const BoardFrame = styled.div`
   padding-bottom: 0px;
   justify-content: center;
   align-items: flex-start;
-  border-top: solid 2.5px black;
+  border-top: solid 2.5px ${(props) => props.theme.darkwhiteColor};
 `;
 
 const TitleAndDirector = styled.div`
@@ -46,23 +46,24 @@ const TitleAndDirector = styled.div`
 const Title = styled.div`
   width: 100%;
   font-size: 17px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.darkwhiteColor};
   padding: 5px;
+  color: ${(props) => props.theme.darkwhiteColor};
 `;
 
 const Director = styled(Title)`
-  border-left: 1px solid black;
+  border-left: 1px solid ${(props) => props.theme.darkwhiteColor};
 `;
 
 const BoardHeaderTitle = styled(Title)`
-  background-color: #f2889b;
+  background-color: ${(props) => props.theme.pinkblueColor};
   color: white;
   font-weight: 700;
   text-align: center;
 `;
 
 const BoardHeaderDirector = styled(Director)`
-  background-color: #f2889b;
+  background-color: ${(props) => props.theme.pinkblueColor};
   color: white;
   font-weight: 700;
   text-align: center;
@@ -89,8 +90,8 @@ const CreateButton = styled(motion.button)`
   flex-shrink: 0;
   padding: 5px;
   border-radius: 10px;
-  border: 3px solid #000;
-  background-color: #f2889b;
+  border: 3px solid ${(props) => props.theme.pinkblueColor};
+  background-color: ${(props) => props.theme.pinkblueColor};
   cursor: pointer;
 `;
 

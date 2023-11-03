@@ -17,7 +17,7 @@ export const PopularMovieTitle = styled.div`
   width: 363px;
   height: 47px;
   margin: 20px 20px 0px 20px;
-  color: #000;
+  color: ${(props) => props.theme.darkwhiteColor};
   font-size: 36px;
   font-weight: 700;
   letter-spacing: -3.6px;

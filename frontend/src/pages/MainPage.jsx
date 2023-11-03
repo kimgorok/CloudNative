@@ -8,13 +8,13 @@ export const MainFrame = styled.div`
 
   flex-direction: column;
   flex-shrink: 0;
-  background: #fff;
+  background: ${(props) => props.theme.whiteblueColor};
   border-radius: 20px;
-  border: 10px double #f2889b;
+  border: 10px double ${(props) => props.theme.pinkblueColor};
 `;
 
 const BigText = styled.div`
-  color: #000;
+  color: ${(props) => props.theme.darkwhiteColor};
   font-size: 36px;
   font-weight: 700;
   letter-spacing: -3.6px;
