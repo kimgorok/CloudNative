@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #2979FF;
+  background: #85a4bb;
   border-radius: 4px 4px 0 0;
   height: 60px;
   width: 100%;
@@ -12,7 +12,7 @@
   flex: 0.5;
   display: flex;
   align-items: center;
-  margin-left: 5%;
+  margin-left: 20%;
   color: white;
 }
 

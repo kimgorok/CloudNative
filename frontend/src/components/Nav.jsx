@@ -15,6 +15,7 @@ const NavWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
+  z-index: 0;
 `;
 
 // 메뉴 써있는 부분

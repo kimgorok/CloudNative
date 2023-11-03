@@ -7,6 +7,7 @@ import Input from "../components/Chatting/Input/Input";
 import Messages from "../components/Messages/Messages";
 
 import "./Chat.css";
+import { MainFrame } from "./MainPage";
 
 const ENDPOINT = "http://localhost:5000"; // Socket.IO 서버의 엔드포인트
 let socket; // Socket.IO 소켓 객체
