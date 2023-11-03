@@ -36,6 +36,7 @@ export const PopularMovieGrid = styled.div`
   flex-shrink: 0;
 `;
 
+// 인기 영화 3개
 export const PopularMovie = styled.div`
   width: 290px;
   height: 360px;
@@ -53,6 +54,7 @@ export const PopularMovie = styled.div`
   }
 `;
 
+// 인기 영화 순위 글씨
 export const PopularMovieText = styled.div`
   color: white;
   font-size: 3.5rem;
@@ -63,6 +65,7 @@ export const PopularMovieText = styled.div`
   text-shadow: 3px 3px 0 black;
 `;
 
+// 인기 영화 애니메이션
 export const PopularMovieVariants = {
   hidden: {
     opacity: 0,
@@ -81,6 +84,7 @@ export const PopularMovieVariants = {
   },
 };
 
+// 클릭하면 나오는 큰 화면
 export const BigMovie = styled(motion.div)`
   position: absolute;
   left: 15%;
@@ -94,6 +98,7 @@ export const BigMovie = styled(motion.div)`
   padding-bottom: 10px;
 `;
 
+// 뒤에 검정색되는거
 export const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
@@ -106,6 +111,7 @@ export const Overlay = styled(motion.div)`
   cursor: pointer;
 `;
 
+// 큰 화면 표지
 export const BigCover = styled.div`
   width: 100%;
   background-size: cover;
@@ -113,6 +119,7 @@ export const BigCover = styled.div`
   min-height: 70vh;
 `;
 
+// 큰 화면 제목
 export const BigTitle = styled.div`
   width: 100%;
   font-size: 2.5rem;
@@ -122,6 +129,7 @@ export const BigTitle = styled.div`
   color: white;
 `;
 
+// 큰 화면 설명
 export const BigOverView = styled.div`
   margin: -100px 0px 40px 10px;
   padding: 10px;
@@ -130,6 +138,7 @@ export const BigOverView = styled.div`
   color: white;
 `;
 
+// 큰 화면 기타
 export const BigOthers = styled.div`
   position: relative;
   left: 0px;

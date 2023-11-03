@@ -70,8 +70,8 @@ io.on("connection", (socket) => {
 
     // 채팅방 들어가면 나오는 메시지
     socket.emit("message", {
-      user: "admin",
-      text: `${user?.name}, ${user?.room}에 오신 것을 환영합니다.`,
+      user: "관리자",
+      text: `${user?.name}님, 무엇을 도와드릴까요?`,
     });
     // 다른 사람 들어왔을 때 나오는 메시지
     io.to(user?.room).emit("roomData", {
@@ -96,7 +96,7 @@ io.on("connection", (socket) => {
     if (user) {
       // 사용자가 퇴장하면 방에 있는 모든 사용자에게 전송
       io.to(user?.room).emit("message", {
-        user: "admin",
+        user: "관리자",
         text: `${user?.name}님이 퇴장하셨습니다.`,
       });
       // 방에 있는 사용자 목록을 업데이트하여 알리기 (작동 안하는데 빼면 오류남)

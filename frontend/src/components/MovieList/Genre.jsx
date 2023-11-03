@@ -16,6 +16,7 @@ const ButtonFrame = styled.div`
   justify-content: space-between;
 `;
 
+// 좌우 버튼
 const SliderButton = styled(motion.button)`
   background: rgba(0, 0, 0, 0.3);
   color: white;
@@ -24,6 +25,7 @@ const SliderButton = styled(motion.button)`
   cursor: pointer;
 `;
 
+// DB로 가져온 영화 제목
 const DBMovieTitle = styled.div`
   color: #000;
 
@@ -35,6 +37,7 @@ const DBMovieTitle = styled.div`
   letter-spacing: -3.6px;
 `;
 
+// DB로 가져온 영화 Wrapper 가로로 김
 const DBMovieWrapper = styled.div`
   height: 389px;
   flex-shrink: 0;
@@ -44,6 +47,7 @@ const DBMovieWrapper = styled.div`
   gap: 41px;
 `;
 
+// DB로 가져온 영화 Frame
 const DBMovieFrame = styled(motion.div)`
   width: 17.5%;
   height: 80%;

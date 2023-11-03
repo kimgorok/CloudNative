@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // 리액트 라우터의 링크를 사용하기 위한 라이브러리
 
-import "./Join.css";
 import { MainFrame } from "./MainPage";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -12,6 +11,7 @@ const JoinContainer = styled.div`
   height: 100vh;
 `;
 
+//  방이름, 헤더처럼 사용
 const RoomName = styled.input`
   background-color: #f2889b;
   color: white;
@@ -25,6 +25,7 @@ const RoomName = styled.input`
   letter-spacing: -3.6px;
 `;
 
+// 닉네임 적는 인풋
 const NickName = styled.input`
   margin: 60px 20px 20px 20px;
   padding: 20px;
@@ -32,23 +33,26 @@ const NickName = styled.input`
   border: 2px solid #f2889b;
   font-size: 25px;
   font-style: normal;
+  outline: none;
 `;
 
+// 가입 버튼 있는 div
 const JoinButtonFrame = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 40px;
 `;
 
+// 가입 버튼
 const JoinButton = styled(motion.button)`
   color: white;
   background: #f2889b;
-  padding: 10px 20px;
+  padding: 10px 25px;
   border-radius: 15px;
   border: solid 3px black;
   cursor: pointer;
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
 `;
 

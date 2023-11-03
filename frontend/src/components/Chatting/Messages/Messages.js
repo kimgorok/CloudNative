@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import BasicScrollToBottom from "react-scroll-to-bottom";
-import Message from "./Message/Message";
+import Message from "./Message";
 
 import "./Messages.css";
 

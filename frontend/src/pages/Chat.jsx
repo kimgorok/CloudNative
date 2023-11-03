@@ -2,15 +2,35 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string"; // URL 쿼리 파싱을 위한 라이브러리
 import io from "socket.io-client"; // Socket.IO 클라이언트 라이브러리
 
-import InfoBar from "../components/Chatting/InfoBar/InfoBar";
-import Input from "../components/Chatting/Input/Input";
-import Messages from "../components/Messages/Messages";
+import InfoBar from "../components/Chatting/InfoBar";
+import Input from "../components/Chatting/Input";
+import Messages from "../components/Chatting/Messages/Messages";
 
-import "./Chat.css";
 import { MainFrame } from "./MainPage";
+import styled from "styled-components";
 
 const ENDPOINT = "http://localhost:5000"; // Socket.IO 서버의 엔드포인트
 let socket; // Socket.IO 소켓 객체
+
+// 채팅 스타일
+const ChatContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+`;
+// 채팅화면
+const ChatScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #adcce4;
+  border-radius: 8px;
+  margin-top: 5%;
+  height: 80vh;
+  width: 90%;
+`;
 
 const Chat = ({ location }) => {
   const [name, setName] = useState("");
@@ -23,12 +43,8 @@ const Chat = ({ location }) => {
     // URL에서 name과 room을 가져옴
     const { name, room } = queryString.parse(window.location.search);
 
-    console.log("이름 : " + name, "방 : " + room);
-
     // Socket.io를 초기화
     socket = io(ENDPOINT);
-
-    console.log("ENDPOINT:", ENDPOINT);
     setRoom(room);
     setName(name);
 
@@ -60,17 +76,19 @@ const Chat = ({ location }) => {
   };
 
   return (
-    <div className="outerContainer">
-      <div className="container">
-        <InfoBar room={room} />
-        <Messages messages={messages} name={name} />
-        <Input
-          message={message}
-          setMessage={setMessage}
-          sendMessage={sendMessage}
-        />
-      </div>
-    </div>
+    <MainFrame>
+      <ChatContainer>
+        <ChatScreen>
+          <InfoBar room={room} />
+          <Messages messages={messages} name={name} />
+          <Input
+            message={message}
+            setMessage={setMessage}
+            sendMessage={sendMessage}
+          />
+        </ChatScreen>
+      </ChatContainer>
+    </MainFrame>
   );
 };
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+// + 버튼
 const ToggleButton = styled(motion.button)`
   position: fixed;
   right: 40px;
@@ -21,6 +22,7 @@ const ToggleButton = styled(motion.button)`
   }
 `;
 
+// 뒤에 숨은 버튼들
 const OtherButton = styled(ToggleButton)`
   z-index: 1;
 `;
@@ -29,6 +31,7 @@ function FloatButton() {
   const [movingButton, setMovingButton] = useState(false);
   const [toggleButtonClicked, setToggleButtonClicked] = useState(false);
 
+  // 토글 함수
   const handleToggleClick = () => {
     setMovingButton((prev) => !prev);
     setToggleButtonClicked((prev) => !prev);
