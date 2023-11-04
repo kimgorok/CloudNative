@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+// 헤더
 const HeaderWrapper = styled.div`
   width: 100%;
   height: 60px;
@@ -11,12 +12,14 @@ const HeaderWrapper = styled.div`
   background: ${(props) => props.theme.pinkblueColor};
 `;
 
+// 로그인|회원가입 프레임
 const LoginRegisterFrame = styled.div`
   display: flex;
   align-items: center;
   gap: 19px;
 `;
 
+// 로그인과 회원가입 글씨
 const LoginRegister = styled.div`
   color: white;
   font-size: 15px;
@@ -24,8 +27,10 @@ const LoginRegister = styled.div`
   line-height: normal;
 `;
 
+// 로고 프레임
 const LogoFrame = styled(LoginRegisterFrame)``;
 
+// 로고
 const Logo = styled(motion.svg)`
   width: 95px;
   fill: white;
@@ -35,6 +40,7 @@ const Logo = styled(motion.svg)`
   }
 `;
 
+// 로고 쇼로로로로로롱 애니메이션
 const logoVariants = {
   normal: {
     fillOpacity: 1,
@@ -47,6 +53,7 @@ const logoVariants = {
   },
 };
 
+// 검색창
 const Search = styled.form`
   color: white;
   display: flex;
@@ -57,6 +64,7 @@ const Search = styled.form`
   }
 `;
 
+// 검색 input
 const Input = styled(motion.input)`
   transform-origin: right center;
   position: absolute;
@@ -65,7 +73,7 @@ const Input = styled(motion.input)`
 
   color: white;
   font-size: 16px;
-  background-color: transparent;
+  background-color: transparent; // 배경 투명화
   border: 1px solid white;
   &::placeholder {
     color: white;
@@ -74,6 +82,7 @@ const Input = styled(motion.input)`
 `;
 
 function MyHeader() {
+  // 검색창 토글
   const [searchOpen, setSearchOpen] = useState(false);
   const inputAnimation = useAnimation();
   const toggleSearch = () => {

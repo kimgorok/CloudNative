@@ -57,6 +57,7 @@ const images = [
 function MovieList() {
   // useQuery로 영화api를 가져옴
   const { data } = useQuery(["movies", "nowPlaying"], getMovies);
+  // 이건 db에 있는 데이터
   const dbdata = useQuery(["dbmovies", "animation"], getMyMovies);
   console.log(dbdata);
 
@@ -137,7 +138,7 @@ function MovieList() {
     );
   };
 
-  // 애니메이션
+  // 애니메이션 영화
   const [AnimationCurrentIndex, setAnimationCurrentIndex] = useState(0);
 
   const AnimationNextSlide = () => {
