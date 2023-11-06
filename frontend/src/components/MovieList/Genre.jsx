@@ -32,6 +32,7 @@ const DBMovieTitle = styled.div`
   font-weight: 700;
   line-height: normal;
   letter-spacing: -3.6px;
+  padding-left: 2%;
 `;
 
 // DB로 가져온 영화 Wrapper 가로로 김
@@ -55,6 +56,28 @@ const DBMovieFrame = styled(motion.div)`
   background: #b4bec9;
 `;
 
+const DBMovieImg = styled.div`
+  height: 228px;
+  flex-shrink: 0;
+  background-color: #b1b1b1;
+
+  border-radius: 42px 42px 0px 0px;
+`;
+
+const DBMovieNameFrame = styled.div`
+  display: flex;
+
+  height: auto;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+const DBMovieName = styled.div`
+  text-align: center;
+  font-size: 26px;
+`;
+
 const GenreModule = ({
   title,
   images,
@@ -73,7 +96,10 @@ const GenreModule = ({
               transform: `translateX(-${currentIndex * 170}%)`,
             }}
           >
-            <img src={image} alt={`Slide ${index + 1}`} />
+            <DBMovieImg src={image} alt={`Slide ${index + 1}`} />
+            <DBMovieNameFrame>
+              <DBMovieName>이름</DBMovieName>
+            </DBMovieNameFrame>
           </DBMovieFrame>
         ))}
         <ButtonFrame>
