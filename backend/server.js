@@ -17,9 +17,34 @@ app.use(cors());
 app.use(express.json()); // JSON 파싱 미들웨어 사용
 
 // "/api/movies" 라우트 : 영화 데이터 반환
-app.get("/api/movies", (req, res) => {
+// 액션 영화
+app.get("/api/Action_movie", (req, res) => {
   // 데이터베이스에서 "movie" 테이블을 쿼리하여 결과를 반환
-  return db.pool.query("select * from movie;", (err, results) => {
+  return db.pool.query("select * from Action_movie;", (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(results);
+    return res.json(results);
+  });
+});
+
+// 애니메이션 영화
+app.get("/api/Animation_movie", (req, res) => {
+  // 데이터베이스에서 "movie" 테이블을 쿼리하여 결과를 반환
+  return db.pool.query("select * from Animation_movie;", (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(results);
+    return res.json(results);
+  });
+});
+
+// 음악 영화
+app.get("/api/Music_movie", (req, res) => {
+  // 데이터베이스에서 "movie" 테이블을 쿼리하여 결과를 반환
+  return db.pool.query("select * from Music_movie;", (err, results) => {
     if (err) {
       console.log(err);
     }

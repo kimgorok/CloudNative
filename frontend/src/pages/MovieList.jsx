@@ -1,6 +1,13 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getMovies, getMyMovies, makeBgPath, makeImagePath } from "../api";
+import {
+  getAnimationMovies,
+  getMovies,
+  getMusicMovies,
+  getMyMovies,
+  makeBgPath,
+  makeImagePath,
+} from "../api";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import BannerModule from "../components/MovieList/Banner";
@@ -58,8 +65,17 @@ function MovieList() {
   // useQuery로 영화api를 가져옴
   const { data } = useQuery(["movies", "nowPlaying"], getMovies);
   // 이건 db에 있는 데이터
-  const dbdata = useQuery(["dbmovies", "animation"], getMyMovies);
-  console.log(dbdata);
+  // 액션영화
+  const dbdata = useQuery(["dbmovies", "action"], getMyMovies);
+  console.log("액션영화 : ", dbdata);
+
+  // 애니메이션 영화화
+  const animationdata = useQuery(["aniMovies", "animation"], getMusicMovies);
+  console.log("애니메이션영화 : ", animationdata);
+
+  // 음악 영화
+  const musicdata = useQuery(["musicMovies", "music"], getAnimationMovies);
+  console.log("음악영화 : ", musicdata);
 
   const [index, setIndex] = useState(3);
   // 한 번에 보여줄 영화 개수

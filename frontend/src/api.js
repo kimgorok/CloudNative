@@ -8,7 +8,19 @@ export function getMovies() {
 }
 
 export function getMyMovies() {
-  return fetch(`http://localhost:5000/api/movies`).then((response) =>
+  return fetch(`http://localhost:5000/api/Action_movie`).then((response) =>
+    response.json()
+  );
+}
+
+export function getAnimationMovies() {
+  return fetch(`http://localhost:5000/api/Animation_movie`).then((response) =>
+    response.json()
+  );
+}
+
+export function getMusicMovies() {
+  return fetch(`http://localhost:5000/api/Music_movie`).then((response) =>
     response.json()
   );
 }
