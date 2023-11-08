@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -18,7 +18,8 @@ const ButtonFrame = styled.div`
 
 // 좌우 버튼
 const SliderButton = styled(motion.button)`
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(76, 76, 76, 0.5);
+  position: relateve;
   color: white;
   border: none;
   padding: 20px 5px 20px 5px;
@@ -33,35 +34,37 @@ const DBMovieTitle = styled.div`
   line-height: normal;
   letter-spacing: -3.6px;
   padding-left: 2%;
+  margin-top: 2%;
 `;
 
 // DB로 가져온 영화 Wrapper 가로로 김
 const DBMovieWrapper = styled.div`
-  height: 389px;
+  height: auto;
   flex-shrink: 0;
-
+  margin: 10px 0px 30px 0px;
   display: flex;
   align-items: center;
-  gap: 41px;
+  gap: 30px;
 `;
 
 // DB로 가져온 영화 Frame
 const DBMovieFrame = styled(motion.div)`
   width: 17.5%;
   height: 80%;
+  margin: 0px 5px;
   flex-shrink: 0;
-
+  background-color: ${(props) => props.theme.bgColor};
   transition: transform 0.5s ease;
   border-radius: 42px;
-  background: #b4bec9;
+  overflow: hidden;
+  border: 5px solid ${(props) => props.theme.pinkblueColor};
+  box-shadow: 1px 1px 3px grey;
 `;
 
-const DBMovieImg = styled.div`
-  height: 228px;
+const DBMovieImg = styled.img`
+  width: 100%;
+  height: 250px;
   flex-shrink: 0;
-  background-color: #b1b1b1;
-
-  border-radius: 42px 42px 0px 0px;
 `;
 
 const DBMovieNameFrame = styled.div`
@@ -70,12 +73,18 @@ const DBMovieNameFrame = styled.div`
   height: auto;
   flex-direction: column;
   justify-content: center;
+
   flex-shrink: 0;
 `;
 
 const DBMovieName = styled.div`
   text-align: center;
+  margin-top: 5px;
   font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -3.6px;
+
+  color: ${(props) => props.theme.darkwhiteColor};
 `;
 
 const GenreModule = ({
@@ -85,32 +94,47 @@ const GenreModule = ({
   onPrevClick,
   onNextClick,
 }) => {
+  const [isArrowButtonVisible, setIsArrowButtonVisible] = useState(false);
   return (
     <GenreFrame>
       <DBMovieTitle>{title}</DBMovieTitle>
-      <DBMovieWrapper>
-        {images.map((image, index) => (
-          <DBMovieFrame
-            key={index}
-            style={{
-              transform: `translateX(-${currentIndex * 170}%)`,
-            }}
-          >
-            <DBMovieImg src={image} alt={`Slide ${index + 1}`} />
-            <DBMovieNameFrame>
-              <DBMovieName>이름</DBMovieName>
-            </DBMovieNameFrame>
-          </DBMovieFrame>
-        ))}
-        <ButtonFrame>
-          <SliderButton whileHover={{ scale: 1.4 }} onClick={onPrevClick}>
-            ◀
-          </SliderButton>
-          <SliderButton whileHover={{ scale: 1.4 }} onClick={onNextClick}>
-            ▶
-          </SliderButton>
-        </ButtonFrame>
-      </DBMovieWrapper>
+      <motion.div
+        onMouseEnter={() => setIsArrowButtonVisible(true)}
+        onMouseLeave={() => setIsArrowButtonVisible(false)}
+      >
+        <DBMovieWrapper>
+          {images.map((image, index) => (
+            <DBMovieFrame
+              key={index}
+              style={{
+                transform: `translateX(-${currentIndex * 170}%)`,
+              }}
+            >
+              <DBMovieImg src={image.image_url} alt={"이미지 없음"} />
+
+              <DBMovieNameFrame>
+                <DBMovieName>{image.title}</DBMovieName>
+              </DBMovieNameFrame>
+            </DBMovieFrame>
+          ))}
+          <ButtonFrame>
+            <SliderButton
+              animate={{ opacity: isArrowButtonVisible ? 1 : 0, x: 0 }}
+              whileHover={{ scale: 1.4 }}
+              onClick={onPrevClick}
+            >
+              ◀
+            </SliderButton>
+            <SliderButton
+              animate={{ opacity: isArrowButtonVisible ? 1 : 0, x: 0 }}
+              whileHover={{ scale: 1.4 }}
+              onClick={onNextClick}
+            >
+              ▶
+            </SliderButton>
+          </ButtonFrame>
+        </DBMovieWrapper>
+      </motion.div>
     </GenreFrame>
   );
 };

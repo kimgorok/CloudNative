@@ -67,14 +67,17 @@ function MovieList() {
   // 이건 db에 있는 데이터
   // 액션영화
   const dbdata = useQuery(["dbmovies", "action"], getMyMovies);
-  console.log("액션영화 : ", dbdata);
+  console.log("액션영화 : ", dbdata.data);
 
   // 애니메이션 영화화
-  const animationdata = useQuery(["aniMovies", "animation"], getMusicMovies);
-  console.log("애니메이션영화 : ", animationdata);
+  const animationdata = useQuery(
+    ["aniMovies", "animation"],
+    getAnimationMovies
+  );
+  console.log("애니메이션영화 : ", animationdata.data);
 
   // 음악 영화
-  const musicdata = useQuery(["musicMovies", "music"], getAnimationMovies);
+  const musicdata = useQuery(["musicMovies", "music"], getMusicMovies);
   console.log("음악영화 : ", musicdata);
 
   const [index, setIndex] = useState(3);
@@ -150,7 +153,8 @@ function MovieList() {
 
   const ActionPrevSlide = () => {
     setActionCurrentIndex(
-      ActionCurrentIndex === 0 ? images.length - 6 : ActionCurrentIndex - 1
+      //images.length - 6 를 4로 대체
+      ActionCurrentIndex === 0 ? 4 : ActionCurrentIndex - 1
     );
   };
 
@@ -163,10 +167,19 @@ function MovieList() {
 
   const AnimationPrevSlide = () => {
     setAnimationCurrentIndex(
-      AnimationCurrentIndex === 0
-        ? images.length - 6
-        : AnimationCurrentIndex - 1
+      AnimationCurrentIndex === 0 ? 4 : AnimationCurrentIndex - 1
     );
+  };
+
+  // 음악 영화
+  const [MusicCurrentIndex, setMusicCurrentIndex] = useState(0);
+
+  const MusicnNextSlide = () => {
+    setMusicCurrentIndex((MusicCurrentIndex + 1) % 5);
+  };
+
+  const MusicPrevSlide = () => {
+    setMusicCurrentIndex(MusicCurrentIndex === 0 ? 4 : MusicCurrentIndex - 1);
   };
 
   return (
@@ -261,21 +274,59 @@ function MovieList() {
           </AnimatePresence>
         </PopularMovieFrame>
 
-        <GenreModule
-          title="액션 영화"
-          images={images}
-          currentIndex={ActionCurrentIndex}
-          onPrevClick={ActionPrevSlide}
-          onNextClick={ActionNextSlide}
-        />
+        {dbdata.data ? (
+          <GenreModule
+            title="액션 영화"
+            images={dbdata.data}
+            currentIndex={ActionCurrentIndex}
+            onPrevClick={ActionPrevSlide}
+            onNextClick={ActionNextSlide}
+          />
+        ) : (
+          <GenreModule
+            title="액션 영화"
+            images={images}
+            currentIndex={ActionCurrentIndex}
+            onPrevClick={ActionPrevSlide}
+            onNextClick={ActionNextSlide}
+          />
+        )}
 
-        <GenreModule
-          title="애니메이션 영화"
-          images={images}
-          currentIndex={AnimationCurrentIndex}
-          onPrevClick={AnimationPrevSlide}
-          onNextClick={AnimationNextSlide}
-        />
+        {animationdata.data ? (
+          <GenreModule
+            title="애니메이션 영화"
+            images={animationdata.data}
+            currentIndex={AnimationCurrentIndex}
+            onPrevClick={AnimationPrevSlide}
+            onNextClick={AnimationNextSlide}
+          />
+        ) : (
+          <GenreModule
+            title="애니메이션 영화"
+            images={images}
+            currentIndex={AnimationCurrentIndex}
+            onPrevClick={AnimationPrevSlide}
+            onNextClick={AnimationNextSlide}
+          />
+        )}
+
+        {musicdata.data ? (
+          <GenreModule
+            title="음악 영화"
+            images={musicdata.data}
+            currentIndex={MusicCurrentIndex}
+            onPrevClick={MusicPrevSlide}
+            onNextClick={MusicnNextSlide}
+          />
+        ) : (
+          <GenreModule
+            title="음악 영화"
+            images={images}
+            currentIndex={MusicCurrentIndex}
+            onPrevClick={MusicPrevSlide}
+            onNextClick={MusicnNextSlide}
+          />
+        )}
       </MovieListFrame>
     </>
   );
