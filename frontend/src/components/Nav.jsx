@@ -7,7 +7,6 @@ const NavWrapper = styled.div`
   height: 400px;
   border-radius: 20px;
   border: 10px double ${(props) => props.theme.pinkblueColor};
-  background: #fff;
   position: fixed;
   left: 1%;
   top: 9%;
