@@ -46,20 +46,6 @@ const MovieListFrame = styled.div`
 
 const Banner = styled.div``;
 
-// 여기서 이제 DB에서 가져와야됨
-const images = [
-  "image1.jpg",
-  "image2.jpg",
-  "image3.jpg",
-  "image4.jpg",
-  "image5.jpg",
-  "image6.jpg",
-  "image7.jpg",
-  "image8.jpg",
-  "image9.jpg",
-  "image10.jpg",
-];
-
 // 함수 시작
 function MovieList() {
   // useQuery로 영화api를 가져옴
@@ -67,18 +53,15 @@ function MovieList() {
   // 이건 db에 있는 데이터
   // 액션영화
   const dbdata = useQuery(["dbmovies", "action"], getMyMovies);
-  console.log("액션영화 : ", dbdata.data);
 
   // 애니메이션 영화화
   const animationdata = useQuery(
     ["aniMovies", "animation"],
     getAnimationMovies
   );
-  console.log("애니메이션영화 : ", animationdata.data);
 
   // 음악 영화
   const musicdata = useQuery(["musicMovies", "music"], getMusicMovies);
-  console.log("음악영화 : ", musicdata);
 
   const [index, setIndex] = useState(3);
   // 한 번에 보여줄 영화 개수
@@ -182,6 +165,25 @@ function MovieList() {
     setMusicCurrentIndex(MusicCurrentIndex === 0 ? 4 : MusicCurrentIndex - 1);
   };
 
+  // 장르 별 영화 렌더
+  const renderGenreModule = (
+    title,
+    data,
+    currentIndex,
+    onPrevClick,
+    onNextClick
+  ) => {
+    return (
+      <GenreModule
+        title={title}
+        images={data ? data : []}
+        currentIndex={currentIndex}
+        onPrevClick={onPrevClick}
+        onNextClick={onNextClick}
+      />
+    );
+  };
+
   return (
     <>
       <MovieListFrame>
@@ -274,58 +276,26 @@ function MovieList() {
           </AnimatePresence>
         </PopularMovieFrame>
 
-        {dbdata.data ? (
-          <GenreModule
-            title="액션 영화"
-            images={dbdata.data}
-            currentIndex={ActionCurrentIndex}
-            onPrevClick={ActionPrevSlide}
-            onNextClick={ActionNextSlide}
-          />
-        ) : (
-          <GenreModule
-            title="액션 영화"
-            images={images}
-            currentIndex={ActionCurrentIndex}
-            onPrevClick={ActionPrevSlide}
-            onNextClick={ActionNextSlide}
-          />
+        {renderGenreModule(
+          "액션 영화",
+          dbdata.data,
+          ActionCurrentIndex,
+          ActionPrevSlide,
+          ActionNextSlide
         )}
-
-        {animationdata.data ? (
-          <GenreModule
-            title="애니메이션 영화"
-            images={animationdata.data}
-            currentIndex={AnimationCurrentIndex}
-            onPrevClick={AnimationPrevSlide}
-            onNextClick={AnimationNextSlide}
-          />
-        ) : (
-          <GenreModule
-            title="애니메이션 영화"
-            images={images}
-            currentIndex={AnimationCurrentIndex}
-            onPrevClick={AnimationPrevSlide}
-            onNextClick={AnimationNextSlide}
-          />
+        {renderGenreModule(
+          "애니메이션 영화",
+          animationdata.data,
+          AnimationCurrentIndex,
+          AnimationPrevSlide,
+          AnimationNextSlide
         )}
-
-        {musicdata.data ? (
-          <GenreModule
-            title="음악 영화"
-            images={musicdata.data}
-            currentIndex={MusicCurrentIndex}
-            onPrevClick={MusicPrevSlide}
-            onNextClick={MusicnNextSlide}
-          />
-        ) : (
-          <GenreModule
-            title="음악 영화"
-            images={images}
-            currentIndex={MusicCurrentIndex}
-            onPrevClick={MusicPrevSlide}
-            onNextClick={MusicnNextSlide}
-          />
+        {renderGenreModule(
+          "음악 영화",
+          musicdata.data,
+          MusicCurrentIndex,
+          MusicPrevSlide,
+          MusicnNextSlide
         )}
       </MovieListFrame>
     </>

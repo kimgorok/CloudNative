@@ -79,7 +79,7 @@ const DBMovieNameFrame = styled.div`
 
 const DBMovieName = styled.div`
   text-align: center;
-  margin-top: 5px;
+  padding: 5px;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -3.6px;
