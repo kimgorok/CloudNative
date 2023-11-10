@@ -82,7 +82,7 @@ function MyNav() {
 
       <Link to="/board">
         <NavList>
-          <NavListText>게시판</NavListText>
+          <NavListText>영화 신청</NavListText>
         </NavList>
       </Link>
 
