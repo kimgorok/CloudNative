@@ -1,35 +1,39 @@
+# Docker Compose 파일의 버전을 나타냅니다.
 version: "3"
 services:
+  # Frontend 서비스 정의
   frontend:
-    image: hyunjoong0930/my-frontend:latest
+    image: hyunjoong0930/my-frontend:latest # FE 사용할 이미지
     networks:
-      - network1
+      - network1 # network1 네트워크에 속함
     ports:
-      - "80:3000"
+      - "80:3000" # 로컬 머신의 80번 포트를 컨테이너의 3000번 포트로 매핑
 
+  # Backend 서비스 정의
   backend:
-    image: hyunjoong0930/my-backend:latest
+    image: hyunjoong0930/my-backend:latest # BE 사용할 이미지
     networks:
-      - network1
-    restart: always
+      - network1 # network1 네트워크에 속함
+    restart: always # 컨테이너가 종료되면 항상 재시작
 
+  # MySQL 서비스 정의
   mysql:
-    image: mysql:latest
-    restart: unless-stopped
+    image: mysql:latest # DB 사용할 이미지
+    restart: unless-stopped # 컨테이너가 종료되면 정지되지 않고 다시 시작
     ports:
-      - "33006:3306"
+      - "33006:3306" # 로컬 머신의 33006번 포트를 컨테이너의 3306번 포트로 매핑
     volumes:
-      - mysqlvolume:/var/lib/mysql
-      - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+      - mysqlvolume:/var/lib/mysql # MySQL 데이터베이스를 저장하기 위한 볼륨 설정
+      - ./mysql/sqls/:/docker-entrypoint-initdb.d/ # 초기 SQL 스크립트를 저장하기 위한 볼륨 설정
     environment:
-      MYSQL_ROOT_PASSWORD: rootroot
-      MYSQL_USER: hjoong
-      MYSQL_PASSWORD: testtest
-      MYSQL_DATABASE: myapp
+      MYSQL_ROOT_PASSWORD: rootroot # MySQL 루트 사용자의 비밀번호
+      MYSQL_USER: hjoong # MySQL 사용자 이름
+      MYSQL_PASSWORD: testtest # MySQL 사용자의 비밀번호
+      MYSQL_DATABASE: myapp # MySQL 데이터베이스 이름
     networks:
-      - network1
+      - network1 # network1 네트워크에 속함
 
 networks:
-  network1:
+  network1: # 사용할 네트워크 정의
 volumes:
-  mysqlvolume:
+  mysqlvolume: # MySQL 데이터베이스를 저장하기 위한 볼륨 정의
