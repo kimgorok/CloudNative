@@ -1,3 +1,4 @@
+// 사용자 목록을 저장할 배열
 const users = [];
 
 // 사용자를 방에 추가하는 함수 addUser
@@ -30,6 +31,7 @@ const addUser = ({ id, name, room }) => {
 const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id);
 
+  // 사용자가 존재하면 배열에서 제거하고 해당 사용자 객체 반환
   if (index !== -1) {
     return users.splice(index, 1)[0];
   }

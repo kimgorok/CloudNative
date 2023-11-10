@@ -16,10 +16,10 @@ const io = require("socket.io")(server, {
 app.use(cors());
 app.use(express.json()); // JSON 파싱 미들웨어 사용
 
-// "/api/movies" 라우트 : 영화 데이터 반환
+// "/api/movies" 라우트 : 각각의 영화 카테고리에 따라 데이터 반환
 // 액션 영화
 app.get("/api/Action_movie", (req, res) => {
-  // 데이터베이스에서 "movie" 테이블을 쿼리하여 결과를 반환
+  // "Action_movie" 테이블에서 영화 데이터를 쿼리하여 결과를 반환
   return db.pool.query("select * from Action_movie;", (err, results) => {
     if (err) {
       console.log(err);
@@ -31,7 +31,7 @@ app.get("/api/Action_movie", (req, res) => {
 
 // 애니메이션 영화
 app.get("/api/Animation_movie", (req, res) => {
-  // 데이터베이스에서 "movie" 테이블을 쿼리하여 결과를 반환
+  // "Animation_movie" 테이블에서 영화 데이터를 쿼리하여 결과를 반환
   return db.pool.query("select * from Animation_movie;", (err, results) => {
     if (err) {
       console.log(err);
@@ -43,7 +43,7 @@ app.get("/api/Animation_movie", (req, res) => {
 
 // 음악 영화
 app.get("/api/Music_movie", (req, res) => {
-  // 데이터베이스에서 "movie" 테이블을 쿼리하여 결과를 반환
+  // "Music_movie" 테이블에서 영화 데이터를 쿼리하여 결과를 반환
   return db.pool.query("select * from Music_movie;", (err, results) => {
     if (err) {
       console.log(err);
@@ -73,7 +73,7 @@ app.post("/api/value", (req, res, next) => {
     }
   );
 });
-// Update 부분
+// Update 요청
 app.put("/api/value/:id", (req, res, next) => {
   // 사용자가 전송한 값을 해당 ID의 항목으로 업데이트
   const id = req.params.id;
@@ -91,7 +91,7 @@ app.put("/api/value/:id", (req, res, next) => {
     }
   );
 });
-// Delete 부분
+// Delete 요청
 app.delete("/api/value/:id", (req, res, next) => {
   // 해당 ID의 항목을 "lists" 테이블에서 삭제
   const id = req.params.id;
@@ -112,15 +112,16 @@ const router = require("./router"); // 라우터 모듈 불러오기
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
 
 const PORT = process.env.PORT || 5000; // 포트 설정
-
+// 라우터 등록
 app.use(router);
 
+// 소켓 연결 시 이벤트 핸들링
 io.on("connection", (socket) => {
   console.log("새로운 유저가 접속했습니다.");
-  socket.on("join", ({ name, room }, callback) => {
-    // "join" 이벤트 핸들러, 사용자가 방에 들어오면 나옴
-    const { error, user } = addUser({ id: socket.id, name, room });
 
+  // "join" 이벤트 핸들러, 사용자가 방에 들어오면 작동
+  socket.on("join", ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room });
     if (error) callback({ error: "에러가 발생했습니다." });
 
     // 채팅방 들어가면 나오는 메시지
@@ -137,6 +138,8 @@ io.on("connection", (socket) => {
     socket.join(user?.room);
     callback(); // 콜백함수 호출
   });
+
+  // "sendMessage" 이벤트 핸들러: 사용자가 메시지를 보내면 나옴
   socket.on("sendMessage", (message, callback) => {
     const user = getUser(socket.id);
     // 사용자가 보낸 메시지를 해당 방에 있는 모든 사용자에게 전송
@@ -146,6 +149,8 @@ io.on("connection", (socket) => {
     });
     callback();
   });
+
+  // "disconnect" 이벤트 핸들러: 사용자가 나가면 나옴
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
     if (user) {
