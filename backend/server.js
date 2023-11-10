@@ -53,33 +53,63 @@ app.get("/api/Music_movie", (req, res) => {
   });
 });
 
-// 원래 있던거
-// app.get("/api/values", (req, res, next) => {
-//   db.pool.query("SELECT *FROM lists;", (err, results, fields) => {
-//     if (err) return res.status(500).send(err);
-//     else return res.json(results);
-//   });
-// });
+// 영화 신청 API
+// GET 요청
+app.get("/api/values", (req, res, next) => {
+  // 데이터베이스에서 "lists" 테이블을 쿼리하여 결과를 반환
+  db.pool.query("SELECT *FROM lists;", (err, results, fields) => {
+    if (err) return res.status(500).send(err);
+    else return res.json(results);
+  });
+});
+// POST 요청
+app.post("/api/value", (req, res, next) => {
+  // 사용자가 전송한 값을 "lists" 테이블에 추가
+  db.pool.query(
+    `INSERT INTO lists (value) VALUES("${req.body.value}");`,
+    (err, results, fields) => {
+      if (err) return res.status(500).send(err);
+      else return res.json({ success: true, value: req.body.value });
+    }
+  );
+});
+// Update 부분
+app.put("/api/value/:id", (req, res, next) => {
+  // 사용자가 전송한 값을 해당 ID의 항목으로 업데이트
+  const id = req.params.id;
+  const updatedValue = req.body.value;
 
-// // 원래있던거
-// app.post("/api/value", (req, res, next) => {
-//   db.pool.query(
-//     `INSERT INTO lists (value) VALUES("${req.body.value}");`,
-//     (err, results, fields) => {
-//       if (err) return res.status(500).send(err);
-//       else return res.json({ success: true, value: req.body.value });
-//     }
-//   );
-// });
+  db.pool.query(
+    `UPDATE lists SET value = "${updatedValue}" WHERE id = ${id};`,
+    (err, results, fields) => {
+      if (err) {
+        console.error("Update error:", err);
+        return res.status(500).send(err);
+      } else {
+        return res.json({ success: true });
+      }
+    }
+  );
+});
+// Delete 부분
+app.delete("/api/value/:id", (req, res, next) => {
+  // 해당 ID의 항목을 "lists" 테이블에서 삭제
+  const id = req.params.id;
 
-// app.listen(5000, () => {
-//   console.log("this server listening on 5000");
-// });
+  db.pool.query(
+    `DELETE FROM lists WHERE id = ${id};`,
+    (err, results, fields) => {
+      if (err) return res.status(500).send(err);
+      else return res.json({ success: true });
+    }
+  );
+});
 
 // 채팅창 추가
 // Socket.IO 및 HTTP 서버 설정
 const router = require("./router"); // 라우터 모듈 불러오기
-const { addUser, removeUser, getUser, getUsersInRoom } = require("./users"); // 사용자 관리 함수 불러오기
+// 사용자 관리 함수 불러오기
+const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
 
 const PORT = process.env.PORT || 5000; // 포트 설정
 
@@ -134,7 +164,7 @@ io.on("connection", (socket) => {
   });
 });
 
-// 5000포트에서 실행됨을 알리세요~
+// 5000포트에서 실행됨을 알림
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
