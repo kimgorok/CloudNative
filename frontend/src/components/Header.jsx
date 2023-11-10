@@ -42,10 +42,12 @@ const Logo = styled(motion.svg)`
 
 // 로고 쇼로로로로로롱 애니메이션
 const logoVariants = {
+  // 기본적으론 색칠이 되어있게
   normal: {
     fillOpacity: 1,
   },
   active: {
+    // 색칠 0 -> 1 -> 0 무한 반복
     fillOpacity: [0, 1, 0],
     transition: {
       repeat: Infinity,
@@ -70,7 +72,6 @@ const Input = styled(motion.input)`
   position: absolute;
   right: -5px;
   padding: 5px 10px;
-
   color: white;
   font-size: 16px;
   background-color: transparent; // 배경 투명화

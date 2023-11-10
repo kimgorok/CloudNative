@@ -14,9 +14,7 @@ const ToggleButton = styled(motion.button)`
   background-color: white;
   padding: 10px;
   border-radius: 50%;
-
   cursor: pointer;
-
   box-shadow: 1px 1px 1px grey;
   svg {
     fill: black;

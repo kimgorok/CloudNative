@@ -1,5 +1,5 @@
 import React from "react";
-
+// 이모지를 사용하기 위해 설치하고 import
 import ReactEmoji from "react-emoji";
 import styled from "styled-components";
 
@@ -34,6 +34,7 @@ const MyMessageText = styled.p`
   width: 100%;
   float: left;
   font-size: 1.1em;
+  // 줄 바꿈을 위한 break-word
   word-wrap: break-word;
   font-weight: 600;
 `;
@@ -57,10 +58,10 @@ const OppositionName = styled(MyNickName)`
 `;
 
 function Message({ message: { user, text }, name }) {
+  // 보내는 게 현재 사용자인지 확인하기 위한 변수 선언
   let isSentByCurrentUser = false;
-
-  const trimmedName = name.trim().toLowerCase(); // 사용자 이름에서 공백을 제거하고 소문자로 변환
-
+  // 사용자 이름에서 공백을 제거하고 소문자로 변환
+  const trimmedName = name.trim().toLowerCase();
   // 지금 유저가 보내는 건지, 남이 보내는 건지 확인
   if (user === trimmedName) {
     isSentByCurrentUser = true;

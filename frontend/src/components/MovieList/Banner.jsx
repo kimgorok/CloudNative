@@ -37,8 +37,8 @@ const Overview = styled.p`
 // 배너에 마우스 올렸을 때 나오는 좌우 화살표
 const ArrowButton = styled(motion.button)`
   position: absolute;
-  height: 60vh;
-  max-height: inherit;
+  height: 55vh;
+  max-height: inherit; // 최대 높이를 상속받음
   background: rgba(255, 255, 255, 0.3);
   color: white;
   border: none;
@@ -50,8 +50,8 @@ const PauseButton = styled(motion.button)`
   position: absolute;
   width: 100px;
   height: 100px;
-
-  border-radius: 50px;
+  // 원을 만들기 위해 테두리 50%로
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   color: white;
   border: none;
@@ -74,7 +74,7 @@ function BannerModule({
       <Title>{movie.title}</Title>
       <Overview>{movie.overview}</Overview>
       <ArrowButton
-        animate={{ opacity: isArrowButtonVisible ? 1 : 0, x: 0 }}
+        animate={{ opacity: isArrowButtonVisible ? 1 : 0, x: 0 }} // 화면에 마우스 올리면 보이게
         style={{ left: 0 }}
         onClick={onBackButtonClick}
         whileHover={{ scale: 1.2 }}

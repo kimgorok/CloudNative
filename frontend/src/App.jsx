@@ -16,17 +16,18 @@ import { darkTheme, lightTheme } from "./theme";
 
 import { createGlobalStyle } from "styled-components";
 
+// 글로벌 스타일 생성
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.bgColor};
     margin: 0;
     padding: 0;
   }
-
+  // 링크 밑줄 없애기
   a {
     text-decoration: none;
   }
-
+  // 폰트 설정
   * {
     font-family: Inter;
   }
@@ -36,7 +37,9 @@ function App() {
   const isPink = useRecoilValue(isDarkAtom);
   return (
     <Router>
-      <ThemeProvider theme={isPink ? lightTheme : darkTheme}>
+      <ThemeProvider
+        theme={isPink ? lightTheme : darkTheme} // 다크모드 토글
+      >
         <GlobalStyle />
         <MyHeader />
         <MyNav />

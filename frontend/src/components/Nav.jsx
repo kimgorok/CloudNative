@@ -25,7 +25,6 @@ const NavMenu = styled.div`
   border-radius: 8px 8px 0px 0px;
   background: ${(props) => props.theme.pinkblueColor};
 `;
-
 // 메뉴 글씨
 const NavTitle = styled.span`
   width: 100%;
@@ -35,7 +34,6 @@ const NavTitle = styled.span`
   font-weight: 700;
   letter-spacing: -3.6px;
 `;
-
 // 메뉴 리스트
 const NavList = styled.div`
   background: ${(props) => props.theme.whiteblueColor};
@@ -45,12 +43,10 @@ const NavList = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-
   &:hover {
     background-color: #ebebeb;
   }
 `;
-
 // 메뉴 리스트 글씨
 const NavListText = styled.span`
   width: 100%;

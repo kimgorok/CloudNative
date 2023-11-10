@@ -36,7 +36,6 @@ const DBMovieTitle = styled.div`
   padding-left: 2%;
   margin-top: 2%;
 `;
-
 // DB로 가져온 영화 Wrapper 가로로 김
 const DBMovieWrapper = styled.div`
   height: auto;
@@ -46,7 +45,6 @@ const DBMovieWrapper = styled.div`
   align-items: center;
   gap: 30px;
 `;
-
 // DB로 가져온 영화 Frame
 const DBMovieFrame = styled(motion.div)`
   width: 17.5%;
@@ -60,30 +58,27 @@ const DBMovieFrame = styled(motion.div)`
   border: 5px solid ${(props) => props.theme.pinkblueColor};
   box-shadow: 1px 1px 3px grey;
 `;
-
+// DB로 가져온 영화 이미지
 const DBMovieImg = styled.img`
   width: 100%;
   height: 250px;
   flex-shrink: 0;
 `;
-
+// DB로 가져온 영화 프레임
 const DBMovieNameFrame = styled.div`
   display: flex;
-
   height: auto;
   flex-direction: column;
   justify-content: center;
-
   flex-shrink: 0;
 `;
-
+// DB로 가져온 영화 제목
 const DBMovieName = styled.div`
   text-align: center;
   padding: 5px;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -3.6px;
-
   color: ${(props) => props.theme.darkwhiteColor};
 `;
 
@@ -99,7 +94,7 @@ const GenreModule = ({
     <GenreFrame>
       <DBMovieTitle>{title}</DBMovieTitle>
       <motion.div
-        onMouseEnter={() => setIsArrowButtonVisible(true)}
+        onMouseEnter={() => setIsArrowButtonVisible(true)} // 마우스 올릴 때 화살표 보이게
         onMouseLeave={() => setIsArrowButtonVisible(false)}
       >
         <DBMovieWrapper>
@@ -107,7 +102,7 @@ const GenreModule = ({
             <DBMovieFrame
               key={index}
               style={{
-                transform: `translateX(-${currentIndex * 170}%)`,
+                transform: `translateX(-${currentIndex * 170}%)`, // 한번에 이동하는 거리
               }}
             >
               <DBMovieImg src={image.image_url} alt={"이미지 없음"} />

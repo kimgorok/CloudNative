@@ -83,13 +83,11 @@ const UpdateInput = styled.input`
   font-weight: 700;
   line-height: normal;
   padding-left: 20px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
   color: ${(props) => props.theme.darkwhiteColor};
   background: none;
-  outline: none;
-  border-bottom: 1px solid ${(props) => props.theme.darkwhiteColor};
+  outline: none; // focus 됐을 때 효과 없애기
+  border: none;
+  border-bottom: 1px solid ${(props) => props.theme.darkwhiteColor}; // 아래에만 추가
 `;
 
 // 등록 Wrapper
@@ -118,7 +116,6 @@ const CreateButton = styled(motion.button)`
   min-height: 15px;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
   padding: 5px;
   border-radius: 10px;
   border: 3px solid ${(props) => props.theme.pinkblueColor};
@@ -131,7 +128,6 @@ const CreateText = styled.div`
   text-align: center;
   font-size: 22px;
   font-weight: 700;
-  line-height: normal;
 `;
 
 // 수정 삭제 버튼프레임
@@ -150,9 +146,9 @@ const UpdateDeleteText = styled(CreateText)`
 `;
 
 function BoardPage() {
-  // db로부터 화면에 보여주는 리스트
+  // DB로부터 화면에 보여주는 리스트
   const [lists, setLists] = useState([]);
-  // input 박스로 입력한 값
+  // input으로 입력한 값
   const [value, setValue] = useState("");
   useEffect(() => {
     // DB에 있는 값을 가져온다.
@@ -161,11 +157,11 @@ function BoardPage() {
       setLists(response.data);
     });
   }, []);
-
+  // input에 입력한 값 가져오기
   const ChangeHandler = (e) => {
     setValue(e.currentTarget.value);
   };
-
+  // 등록버튼을 눌렀을 때 DB에 POST하기
   const submitHandler = (e) => {
     axios
       .post("http://localhost:5000/api/value", { value: value })
@@ -180,12 +176,12 @@ function BoardPage() {
       });
   };
 
+  // 수정|삭제
   const [editingItem, setEditingItem] = useState(null);
-
   const handleUpdate = (id) => {
     setEditingItem(id);
   };
-
+  // 수정 함수, id와 updatedValue를 파라미터로
   const handleUpdateSubmit = (id, updatedValue) => {
     axios
       .put(`http://localhost:5000/api/value/${id}`, { value: updatedValue })
@@ -209,11 +205,11 @@ function BoardPage() {
         alert("값을 수정하는데 실패했습니다. Axios 오류:", error.message);
       });
   };
-
+  // 삭제 함수
   const handleDelete = (id) => {
     axios.delete(`http://localhost:5000/api/value/${id}`).then((response) => {
       if (response.data.success) {
-        // 성공적으로 삭제된 경우, 클라이언트에서도 해당 아이템을 삭제합니다.
+        // 성공적으로 삭제된 경우, 클라이언트에서도 해당 아이템을 삭제
         setLists(lists.filter((item) => item.id !== id));
       } else {
         alert("값을 삭제하는데 실패했습니다.");
@@ -233,6 +229,7 @@ function BoardPage() {
           lists.map((list, index) => (
             <ListItemContainer key={index}>
               {editingItem === list.id ? (
+                // 수정 버튼을 클릭했을 때. list.id의 값과 editingItem의 값이 같을 때
                 <ListItemFrame>
                   <UpdateInput
                     type="text"
@@ -257,6 +254,7 @@ function BoardPage() {
                   </UpdateDeleteButtonFrame>
                 </ListItemFrame>
               ) : (
+                // 기본적으로 화면에 보여줄 모습
                 <ListItemFrame>
                   <ListItem>{list.value}</ListItem>
                   <UpdateDeleteButtonFrame>
@@ -278,11 +276,11 @@ function BoardPage() {
             </ListItemContainer>
           ))}
         <CreateWrapper>
-          <form className="example" onSubmit={submitHandler}>
+          <form onSubmit={submitHandler}>
             <CreateFrame>
               <CreateInput
                 type="text"
-                placeholder="입력해주세요"
+                placeholder="이곳에입력해주세요"
                 onChange={ChangeHandler}
                 value={value}
               />
